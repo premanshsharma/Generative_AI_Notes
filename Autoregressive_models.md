@@ -4,17 +4,21 @@
 
 1. **Autoregressive**:
    - The term "autoregressive" refers to a type of model where the value at the current time step is predicted based on the values from previous time steps. This is mathematically represented as:
-     \[
-     x_t = f(x_{t-1}, x_{t-2}, \ldots, x_{t-p}) + \epsilon_t
-     \]
-     where \(x_t\) is the value at time \(t\), \(f\) is a function capturing the relationship, \(p\) is the number of previous observations used for prediction, and \(\epsilon_t\) is the error term.
+
+   \[
+   x_t = f(x_{t-1}, x_{t-2}, \ldots, x_{t-p}) + \epsilon_t
+   \]
+
+   where \(x_t\) is the value at time \(t\), \(f\) is a function capturing the relationship, \(p\) is the number of previous observations used for prediction, and \(\epsilon_t\) is the error term.
 
 2. **Bayesian Network**:
    - A Bayesian Network is a directed acyclic graph (DAG) representing a set of variables and their conditional dependencies. If we have random variables \(X_1, X_2, \ldots, X_n\), the joint probability distribution can be expressed as:
-     \[
-     P(X_1, X_2, \ldots, X_n) = \prod_{i=1}^n P(X_i | \text{Parents}(X_i))
-     \]
-     This allows us to model complex relationships efficiently.
+
+   \[
+   P(X_1, X_2, \ldots, X_n) = \prod_{i=1}^n P(X_i | \text{Parents}(X_i))
+   \]
+
+   This allows us to model complex relationships efficiently.
 
 ---
 
@@ -52,9 +56,11 @@ f_i(x_1, x_2, \ldots, x_{i-1}) = \sigma(\alpha_i^0 + \alpha_i^1 x_1 + \ldots + \
 
 Where:
 - \(\sigma\) is the sigmoid function:
-  \[
-  \sigma(z) = \frac{1}{1 + e^{-z}}
-  \]
+
+\[
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\]
+
 - \(\theta_i = \{\alpha_i^0, \alpha_i^1, \ldots, \alpha_i^{i-1}\}\) are the parameters of the mean function.
 
 The total number of parameters for the entire model is:
@@ -92,6 +98,8 @@ The total number of parameters is dominated by the matrices \(A_i\) and is given
 
 ![nade](https://github.com/user-attachments/assets/8fa897c6-5d26-4c66-bb38-cfcd216607d3)
 
+---
+
 ### Parameter Sharing in NADE
 
 The **Neural Autoregressive Density Estimator (NADE)** improves efficiency by sharing parameters across the different conditionals. This means that the same weight matrix \(W\) and bias vector \(c\) are used for all conditionals, leading to:
@@ -109,10 +117,13 @@ The shared parameters reduce the total number of parameters to:
 This leads to significant improvements in both memory efficiency and computational speed. The activations can be computed recursively as follows:
 
 1. For the first activation:
+
    \[
    a_1 = c
    \]
+
 2. For subsequent activations:
+
    \[
    a_{i+1} = a_i + W[.,i] x_i
    \]
@@ -122,9 +133,10 @@ This leads to significant improvements in both memory efficiency and computation
 ### Extensions to NADE
 
 - **RNADE**: The RNADE algorithm extends NADE to generative modeling over real-valued data. Here, we model each conditional distribution as a mixture of \(K\) Gaussians:
-  \[
-  P(x_i | x_{<i}) = \sum_{k=1}^K w_k \cdot \mathcal{N}(\mu_{i,k}, \sigma_{i,k}^2)
-  \]
+
+   \[
+   P(x_i | x_{<i}) = \sum_{k=1}^K w_k \cdot \mathcal{N}(\mu_{i,k}, \sigma_{i,k}^2)
+   \]
 
 - **EoNADE**: The EoNADE algorithm allows for training an ensemble of NADE models with different orderings, enhancing flexibility and performance.
 
