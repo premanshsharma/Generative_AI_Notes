@@ -6,37 +6,37 @@ https://deepgenerativemodels.github.io/notes/index.html
 
 ## Basic Definitions that might Help
 
-1. Parametric models vs. non-parametric models:-
+### 1. Parametric models vs. non-parametric models:-
    
-  1.1 Parametric Models:
+   1.1 Parametric Models:
    
-    1.1.1 Assumption: Assume a specific distribution (e.g., normal, linear).
-    
-    1.1.2 Parameters: Fixed number of parameters.
-    
-    1.1.3 Advantages: Simple, fast, works with small datasets.
-    
-    1.1.4 Disadvantages: Inflexible, can perform poorly if assumptions are wrong.
-    
-    1.1.5 Examples: Linear regression, logistic regression, Naive Bayes.
+       1.1.1 Assumption: Assume a specific distribution (e.g., normal, linear).
+       
+       1.1.2 Parameters: Fixed number of parameters.
+       
+       1.1.3 Advantages: Simple, fast, works with small datasets.
+       
+       1.1.4 Disadvantages: Inflexible, can perform poorly if assumptions are wrong.
+       
+       1.1.5 Examples: Linear regression, logistic regression, Naive Bayes.
 
-  2.2 Non-Parametric Models:
+     2.2 Non-Parametric Models:
   
-    1.2.1 Assumption: No assumption about data distribution.
-    
-    1.2.2 Parameters: The number of parameters grows with data size.
-    
-    1.2.3 Advantages: Flexible, handles complex data patterns.
-    
-    1.2.4 Disadvantages: Requires more data, computationally expensive.
-    
-    1.2.5 Examples: K-Nearest Neighbors, decision trees, kernel density estimation.
+       1.2.1 Assumption: No assumption about data distribution.
+       
+       1.2.2 Parameters: The number of parameters grows with data size.
+       
+       1.2.3 Advantages: Flexible, handles complex data patterns.
+       
+       1.2.4 Disadvantages: Requires more data, computationally expensive.
+       
+       1.2.5 Examples: K-Nearest Neighbors, decision trees, kernel density estimation.
 
-2. Inference:-
+### 2. Inference:-
    
   2.1  It is the process of drawing conclusions or generating new data points based on a learned model. 
 
-3. Discriminative Model:-
+### 3. Discriminative Model:-
 
   3.1 It is a type of model that focuses on modeling the boundary or decision rule that separates different classes in the data. 
   
