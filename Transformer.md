@@ -1,4 +1,5 @@
 ## Key components of the Transformer Architecture
+![image](https://github.com/user-attachments/assets/d9938997-fdcc-4960-a7a3-ad12b04f6fa9)
 
 ### 1. Self-Attention Mechanism
 - It allows the model to weigh the importance of different words in a sentence when encoding a
@@ -68,7 +69,7 @@
            - **(V<sub>head<sub>i</sub></sub>) = VW<sub>i</sub><sup>(V)</sup>**
            - where QW<sub>i</sub><sup>(Q)</sup>**, KW<sub>i</sub><sup>(K)</sup>**, VW<sub>i</sub><sup>(V)</sup>** are the weight matrices for the i-th head (these are learned during training).
     2. Compute Attention for each head
-         - Attention<sub>I</sub) = softmax((Q<sub>head<sub>i</sub></sub>)(K<sub>head<sub>i</sub></sub>)<sup>T</sup>/(d<sub>k</sub>)<sup>(1/2)</sup>)(V<sub>head<sub>i</sub></sub>)
+         - Attention<sub>i</sub) = softmax((Q<sub>head<sub>i</sub></sub>)(K<sub>head<sub>i</sub></sub>)<sup>T</sup>/(d<sub>k</sub>)<sup>(1/2)</sup>)(V<sub>head<sub>i</sub></sub>)
          - Each head focuses on different aspects of the input because of the different weight matrices.
     3. Concatenate the Results:-
          - Concat(Attention1, Attention2, .........., Attentionh) Where h is the number of heads. This gives us a combined representation of all the different heads.
@@ -119,3 +120,5 @@
 - Computer Vision: Vision Transformers (ViT) have adapted the architecture for image classification tasks.
 - Speech Recognition and Music Generation: Transformers are being explored in other modalities as well, including audio and music.
 
+# To look:-
+masking of input in transformer layer:- for encoder, we make every this -infinite of all the indexes greater than current, if we don't do that it works like bidirectional attention so for encoding do this and for decoding have bidirectional attention. 
