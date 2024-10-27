@@ -1,5 +1,17 @@
 # Definitions for references
 - **Vocabulary** refers to the set of unique words or tokens the model recognizes and uses in its processing tasks. **Vocab size** is the number of unique tokens
+- **Logits**
+  - Definition: Logits are the raw, unnormalized scores output by a model before applying any activation function.
+  - Use in Classification: Typically used in classification tasks, where each class has its own logit value.
+  - Mathematical Transformation:
+    - For binary classification: Use the sigmoid function to convert the logit into a probability
+    - For multiclass classification: Use the softmax function to convert logits into probabilities and the sum of exponentials ensures probabilities.
+    - Cross-Entropy Loss: Logits are passed to loss functions like cross-entropy directly for better numerical stability.
+  - Example:
+  - Logits for 3 classes: [2.3,−1.7,0.5]
+  - After softmax transformation, probabilities might look like: [0.76,0.05,0.19]
+  - Here, the first class is predicted with 76% probability.
+
 # Mind Map
 - Transformer Architecture
 - Training
