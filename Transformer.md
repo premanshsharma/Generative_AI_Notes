@@ -1,3 +1,16 @@
+# Mind Map
+- Encoder-Decoder Architecture
+  - Encoder (Used for tasks like text understanding, classification)
+  - Decoder (Used for tasks like text generation)
+- Components of Transformer
+  - Self-Attention Mechanism
+    - Query (Q)
+    - Key (K)
+    - Value (V)
+    - Attention Formula:
+```math
+Attention(Q, K, V) = softmax (\frac{Q.K^T}{\sqrt{dk}}).V
+```
 ## Key components of the Transformer Architecture
 ![image](https://github.com/user-attachments/assets/d9938997-fdcc-4960-a7a3-ad12b04f6fa9)
 
