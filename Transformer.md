@@ -1,18 +1,67 @@
 # Mind Map
-- Encoder-Decoder Architecture
-  - Encoder (Used for tasks like text understanding, classification)
-  - Decoder (Used for tasks like text generation)
-- Components of Transformer
-  - Self-Attention Mechanism
-    - Query (Q)
-    - Key (K)
-    - Value (V)
-    - Attention Formula:
+- Transformer Architecture
+- Training
+  - Loss Function:- Cross-Entropy Loss
+  - Optimizer:- Adam Optimizer, Learning Rate Schedule
+  - Backpropagation
+- Application
+  - Machine Translation
+  - Text Summarization
+  - Text Generation
+  - Language Modeling
+  - Speech Recognition
+  - Vision Tasks (e.g., ViT)
+- Variants
+  - BERT (Bidirectional Encoder Representations from Transformers)
+    - Encoder-only architecture
+    - Pre-training (Masked Language Modeling, Next sentence prediction)
+  - GPT (Generative Pre trained Transformer)
+    - Decoder only architecture
+    - Causal language modeling
+  - T5 (Text to text transfer transformer)
+    - Encoder-Decoder architecture
+    - Unified text-to-text framework
+  - ViT (Vision Transformer)
+    - Adapting transformer for vision task
+   
+# Transformer Architecture
+## Mind Map
 ```math
 Attention(Q, K, V) = softmax (\frac{Q.K^T}{\sqrt{dk}}).V
 ```
-## Key components of the Transformer Architecture
-![image](https://github.com/user-attachments/assets/d9938997-fdcc-4960-a7a3-ad12b04f6fa9)
+1. Transformer Architecture
+  1. Input
+    1. Tokenization
+    2. Embedding
+  - Encoder
+    - Multi-Head Self-Attention
+      - Scaled Dot-Product Attention 
+        - Queries, Keys, Values
+        -  Attention Scores: Attention Formula
+        - Softmax Multiple Heads to capture different relationships
+      - Multi Head Attention
+        - Concatenating the attention of multiple heads
+        - Linear transformations per head
+    - Add and Normalize
+      - Residual Connections
+      - Layer Normalization
+    - Feed-Forward Network
+      - Two fully connected layers
+    - Position Encoding
+      - Adding positional information to tokens
+      - Sinusoidal or learned
+  - Decoder
+    - Masked Multi-Head Self-Attention
+      - Similar to the encoder, but with masking to prevent future tokens from attending
+    - Encoder-Decoder Attention
+      - Attention between the encoder's output and the decoder's input
+    - Add and Normalize
+      - Residual connections and normalization
+    - Feed-Forward Network
+      - Same as in the encoder
+  - Output Layer
+    - Linear Transformation
+    - Softmax
 
 ### 1. Self-Attention Mechanism
 - It allows the model to weigh the importance of different words in a sentence when encoding a
@@ -21,7 +70,7 @@ Attention(Q, K, V) = softmax (\frac{Q.K^T}{\sqrt{dk}}).V
   the sequence allowing the model to focus on important words, not just nearby ones.
 - **Goal:-** Calculated weighted sum of values for each word in the sequence which tells us how
  much each word should influence the processing of the current word.  
-- We can think of attention as performing a fuzzy lookup in a key-value store.
+- We think of attention as performing a fuzzy lookup in a key-value store.
   - #### Lookup table:-
     - In the look-up table, we have a table of **Keys that map to values and the Query matches
       one of the keys, returning its value**.
