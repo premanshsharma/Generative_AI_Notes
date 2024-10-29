@@ -148,16 +148,10 @@ that the model can process.
  much each word should influence the processing of the current word.
 #### 1.1 Step1:- Linear Projections of (Q, K, V)
 - ##### 1.1.1 Understanding meaning of Query(Q), Key(K), Value(V) Example:-
-    - Imagine you're in a classroom, and the teacher asks a question.
-    - The teacher is trying to figure out which students have the right knowledge to answer that question.
-      - **Query (Q):** The query is the teacher's question. 
-        - It represents what information the teacher is looking for. 
-        - In this case, it's the thing you want to focus on (like a word in a sentence).
-      - **Key (K):** The key is like each student's set of notes. 
-        - Each student (or word) has their notes (key), and the teacher looks at them to figure out if that student might have the answer. 
-        - The teacher compares the question (query) to the notes (key) to see how relevant each student's knowledge is to the question.
-      - **Value (V):** The value is the actual information each student knows. 
-        - Once the teacher identifies which students have relevant notes (using the key), they go to those students and listen to their answers (the value).
+    - Imagine you're in a library, looking for a book.
+      - **Query (Q):** What are you looking for say 'machine learning'
+      - **Key (K):** Information about each book in the catalog like book title, subject, and keywords 
+      - **Value (V):** The actual content of book itself 
 - ##### 1.1.2 How Q, K, and V work together
 1. **Dot Product of Q and K**
 - Q = X<sub>input</sub>W<sub>Q</sub>, V = X<sub>input</sub>W<sub>V</sub>, K = X<sub>input</sub>W<sub>K</sub>
