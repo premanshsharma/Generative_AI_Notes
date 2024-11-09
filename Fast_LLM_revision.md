@@ -44,11 +44,18 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
    - **Query (Q)**: Represents what we are looking for (a certain relationship or feature).
    - **Key (K)**: Contains the encoded features or summary of the knowledge.
    - **Value (V)**: Contains the detailed information corresponding to the keys.
+   - d<sub>model</sub>: dimension of the model, which is typically the same as the embedding dimension in a standard Transformer model. This is the dimension of the space the model operates in.
 ```math
 Q = X<sub>input</sub>W<sub>Q</sub>
 W_{(Q)} = (d_{(embedding)}, d_{(model)})
+```
+```math
 V = X<sub>input</sub>W<sub>V</sub>
+W_{(Q)} = (d_{(embedding)}, d_{(model)})
+```
+```math
 K = X<sub>input</sub>W<sub>K</sub>
+W_{(Q)} = (d_{(embedding)}, d_{(model)})
 ```
 ```math
 \text{Shape of Q, K, V} = (t,d_{(embedding)})
