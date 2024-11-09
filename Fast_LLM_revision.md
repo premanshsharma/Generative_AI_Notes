@@ -1,24 +1,34 @@
 ```math
 PE_{(pos, 2i)} = \sin \left( \frac{pos}{10000^{2i/d}} \right)
-
+```
+```math
 PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
-
+```
+```math
 \text{score} = QK^T
-
+```
+```math
 \text{scaled score} = \frac{QK^T}{\sqrt{d_k}}
-
+```
+```math
 \text{attention weights} = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)
-
+```
+```math
 \text{attention weights} = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)
-
+```
+```math
 \text{output} = \text{attention weights} \times V
-
+```
+```math
 \text{Multi-head Output} = \text{concat}(head_1, head_2, ..., head_h)W^O
-
+```
+```math
 \text{output}_{\text{norm}} = \text{LayerNorm}(x_{\text{input}} + \text{output}_{\text{attention}})
-
+```
+```math
 Q = X_{\text{decoder}}W_Q, \quad K = X_{\text{encoder}}W_K, \quad V = X_{\text{encoder}}W_V
-
+```
+```math
 \text{probability} = \text{softmax}(\text{logits})
 ```
 
