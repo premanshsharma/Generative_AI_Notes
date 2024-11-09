@@ -27,6 +27,7 @@ Position Encoding shape = (t,d_{(embedding)})
 ```math
 \text{Input}_{\text{final}} = \text{Embedding}(x) + \text{Positional Encoding}
 ```
+- final dimensions of input layer
 ```math
 \text{Input_Embedding_Shape} = (t,d_{(embedding)}
 ```
