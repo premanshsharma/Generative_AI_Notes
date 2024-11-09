@@ -9,7 +9,7 @@
    - **d<sub>embedding</sub>** is the size of these embeddings, for example, d<sub>embedding</sub> = 512, and each token in the input sequence will be represented by a 512-dimension vector. 
 
 ```math
-Input Embedding Shape=(t,d_{(embedding)}
+Input Embedding Shape=(t,d_{(embedding)})
 ```
 4. **Positional Encoding**:  
    Since transformers do not inherently have a sense of token order (unlike RNNs or CNNs), we add **positional encoding** to the embeddings to give the model information about the position of each token in the sequence. The positional encoding values are derived from **sine** and **cosine** functions because they provide a smooth and periodic pattern that captures relative position information across different sequence lengths. 
@@ -20,7 +20,7 @@ PE_{(pos, 2i)} = \sin \left( \frac{pos}{10000^{2i/d}} \right)
 PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```
 ```math
-Position Encoding shape = (t,d_{(embedding)}
+Position Encoding shape = (t,d_{(embedding)})
 ```
 - We add positional encoding of dimension
 
