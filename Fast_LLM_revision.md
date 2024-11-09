@@ -1,21 +1,33 @@
 # Transformer Architecture
 
+-  let input sequence length be '**t**'
 1. **Encoder-Decoder Structure**:  
    A transformer consists of two main parts: an encoder and a decoder. The encoder processes the input sequence, and the decoder generates the output sequence based on the encoder's output.
 
 2. **Embedding Layer**:  
-   Before the input is fed to the encoder, we pass it through an **embedding layer**, which converts the tokens into continuous vector representations (embeddings). These embeddings serve as the input for the transformer.
+   - Before the input is fed to the encoder, we pass it through an **embedding layer**, which converts the tokens into continuous vector representations (embeddings). These embeddings serve as the input for the transformer.
+   - **d<sub>embedding</sub>** is the size of these embeddings, for example, d<sub>embedding</sub> = 512, and each token in the input sequence will be represented by a 512-dimension vector. 
 
-3. **Positional Encoding**:  
-   Since transformers do not inherently have a sense of token order (unlike RNNs or CNNs), we add **positional encoding** to the embeddings to give the model information about the position of each token in the sequence. The positional encoding values are derived from **sine** and **cosine** functions because they provide a smooth and periodic pattern that captures relative position information across different sequence lengths.
+```math
+Input Embedding Shape=(t,d_{(embedding)}
+```
+4. **Positional Encoding**:  
+   Since transformers do not inherently have a sense of token order (unlike RNNs or CNNs), we add **positional encoding** to the embeddings to give the model information about the position of each token in the sequence. The positional encoding values are derived from **sine** and **cosine** functions because they provide a smooth and periodic pattern that captures relative position information across different sequence lengths. 
 ```math
 PE_{(pos, 2i)} = \sin \left( \frac{pos}{10000^{2i/d}} \right)
 ```
 ```math
 PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```
+- We add positional encoding of dimension
+```math
+Position Encoding shape = (t,d_{(embedding)}
+```
 ```math
 \(\text{Input}_{\text{final}} = \text{Embedding}(x) + \text{Positional Encoding}\)
+```
+```math
+Input Embedding Shape=(t,d_{(embedding)}
 ```
 5. **Encoder Layer**:  
    The encoder has multiple layers, each consisting of two main components:
@@ -82,3 +94,8 @@ Q = X_{\text{decoder}}W_Q, \quad K = X_{\text{encoder}}W_K, \quad V = X_{\text{e
 - Masked Self-Attention in the decoder ensures that the model doesn't "cheat" by peeking at future tokens when generating outputs.
 - Multi-head Attention enables the model to learn different relationships in parallel.
 - The final logits are used to generate a distribution over all possible tokens, typically used in tasks like translation, text generation, etc.
+
+
+# BERT
+- it is an encoder only model.
+- 
