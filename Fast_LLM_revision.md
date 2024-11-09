@@ -113,7 +113,7 @@ Q = X_{\text{decoder}}W_Q, \quad K = X_{\text{encoder}}W_K, \quad V = X_{\text{e
    The final output of the transformer consists of logits, which are unnormalized predictions for each token in the vocabulary. These logits are passed through a **softmax** function to convert them into a probability distribution, from which we can predict the next token or generate the output sequence.
    
 ```math
-\text{Z} = \text{d_{(decoder)}} * \text{W_{(embedding)(vocab)}}
+\text{Z} = \text{d}_{\text{(decoder)}} \times \text{W}_{\text{embedding, vocab}}
 ```
 
 - Z is logits
