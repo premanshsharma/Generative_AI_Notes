@@ -29,7 +29,7 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```
 - final dimensions of the input layer
 ```math
-\text{Input Embedding Shape} = (t,d_{(embedding)})
+\text{Input Embedding Shape(X)} = (t,d_{(embedding)})
 ```
 5. **Encoder Layer**:  
    The encoder has multiple layers, each consisting of two main components:
@@ -42,6 +42,7 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
    - **Query (Q)**: Represents what we are looking for (a certain relationship or feature).
    - **Key (K)**: Contains the encoded features or summary of the knowledge.
    - **Value (V)**: Contains the detailed information corresponding to the keys.
+   - Q = X<sub>input</sub>W<sub>Q</sub>, V = X<sub>input</sub>W<sub>V</sub>, K = X<sub>input</sub>W<sub>K</sub>
 ```math
 \text{Shape of Q, K, V} = (t,d_{(embedding)})
 ```
