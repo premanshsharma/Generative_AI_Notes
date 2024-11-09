@@ -29,8 +29,9 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```
 - final dimensions of the input layer
 ```math
-\text{Input Embedding Shape}(\text{X_(input)}) = \text{t, }\text{d_{(embedding)}}
+\text{X_{(input)}} = \text{Input Embedding Shape} = (t,d_{(embedding)})
 ```
+
 5. **Encoder Layer**:  
    The encoder has multiple layers, each consisting of two main components:
    - **Self-attention**: The encoder attends to the input sequence to create a contextualized representation of each token.
