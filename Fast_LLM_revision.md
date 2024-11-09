@@ -14,7 +14,9 @@ PE_{(pos, 2i)} = \sin \left( \frac{pos}{10000^{2i/d}} \right)
 ```math
 PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```
-
+```math
+\(\text{Input}_{\text{final}} = \text{Embedding}(x) + \text{Positional Encoding}\)
+```
 5. **Encoder Layer**:  
    The encoder has multiple layers, each consisting of two main components:
    - **Self-attention**: The encoder attends to the input sequence to create a contextualized representation of each token.
