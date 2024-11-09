@@ -29,7 +29,7 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```
 - final dimensions of the input layer
 ```math
-\text{Input Embedding Shape(X)} = (t,d_{(embedding)})
+\text{Input Embedding Shape(X_{(input)})} = (t,d_{(embedding)})
 ```
 5. **Encoder Layer**:  
    The encoder has multiple layers, each consisting of two main components:
@@ -42,7 +42,12 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
    - **Query (Q)**: Represents what we are looking for (a certain relationship or feature).
    - **Key (K)**: Contains the encoded features or summary of the knowledge.
    - **Value (V)**: Contains the detailed information corresponding to the keys.
-   - Q = X<sub>input</sub>W<sub>Q</sub>, V = X<sub>input</sub>W<sub>V</sub>, K = X<sub>input</sub>W<sub>K</sub>
+```math
+Q = X<sub>input</sub>W<sub>Q</sub>
+W_{(Q)} = (d_{(embedding)}, d_{(model)})
+V = X<sub>input</sub>W<sub>V</sub>
+K = X<sub>input</sub>W<sub>K</sub>
+```
 ```math
 \text{Shape of Q, K, V} = (t,d_{(embedding)})
 ```
@@ -55,11 +60,18 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```math
 \text{score} = QK^T
 ```
+
 ```math
 \text{scaled score} = \frac{QK^T}{\sqrt{d_embedding}}
 ```
 ```math
+\text{scaled score} = (t,t)
+```
+```math
 \text{attention weights} = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)
+```
+```math
+\text{attention weights} = (t,d_{(embedding)})
 ```
 6. **Multi-head Attention**:  
    Instead of performing a single attention operation, transformers use **multi-head attention**. This means that multiple attention mechanisms (heads) run in parallel, each learning different aspects of the relationships between tokens. The results from all attention heads are concatenated and passed through a linear layer to combine the information.
@@ -70,13 +82,17 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```math
 \text{Multi-head Output} = \text{concat}(head_1, head_2, ..., head_h)W^O
 ```
-
-7. **Normalization and Residual Connection**:  
-   After the attention layer, the output is passed through a **Layer Normalization** and is added to the input of the attention layer (a residual connection). This helps stabilize training and facilitates gradient flow.
+```math
+\text{Multi head output} = (t,d_{(embedding)})
+```
+7. **Feed forward Network, Normalization and Residual Connection**:  
+   After the attention layer, the output is passed through a **Layer Normalization** and is added to the input of the attention layer (a residual connection). This helps stabilize training and facilitates gradient flow. After computing attention, the model applies a simple neural network (called a feed-forward network) to each word independently. This helps the model process the word’s representation in a non-linear way. FNN is applied independently to each token.
 ```math
 \text{output}_{\text{norm}} = \text{LayerNorm}(x_{\text{input}} + \text{output}_{\text{attention}})
 ```
-
+```math
+\text{output}_{\text{encoder}} = (t,d_{(embedding)})
+```
 8. **Decoder Layer**:  
    The decoder also has several layers, and each layer consists of:
    - **Masked self-attention**: Similar to the encoder's attention, but with masking to ensure the decoder can only attend to previous tokens and not future ones (important for autoregressive tasks like language generation).
@@ -86,14 +102,26 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```math
 Q = X_{\text{decoder}}W_Q, \quad K = X_{\text{encoder}}W_K, \quad V = X_{\text{encoder}}W_V
 ```
+- Output shape of decoder layer will be same as encoder layer
+```math
+\text{output}_{\text{decoder}} = (t,d_{(embedding)})
+```
 
 9. **Final Output Layer**:  
    The final output of the transformer consists of logits, which are unnormalized predictions for each token in the vocabulary. These logits are passed through a **softmax** function to convert them into a probability distribution, from which we can predict the next token or generate the output sequence.
-
+```math
+\text{Z} = \text{d_{(decoder)}}*\text{W_{embedding}{vocab}}
+```
+- Z is logits
+```math
+\text{Z Shape} = (t,d_{(vocab)})
+```
 ```math
 \text{probability} = \text{softmax}(\text{logits})
 ```
-
+```math
+\text{probability Shape} = (t,d_{(vocab)})
+```
 ## Key Points to Note:
 - Positional Encoding allows the model to understand the order of tokens in the sequence, which is important for NLP tasks.
 - Self-attention is used in both the encoder and decoder to allow each token to focus on other tokens in the sequence, capturing relationships.
