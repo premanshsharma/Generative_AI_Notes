@@ -28,8 +28,9 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 \text{Input}_{\text{final}} = \text{Embedding}(x) + \text{Positional Encoding}
 ```
 - final dimensions of the input layer
+
 ```math
-\text{X_{(input)}} = \text{Input Embedding Shape} = (t,d_{(embedding)})
+\text{Input Embedding Shape} = (t,d_{(embedding)})
 ```
 
 5. **Encoder Layer**:  
