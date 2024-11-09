@@ -20,7 +20,7 @@ PE_{(pos, 2i)} = \sin \left( \frac{pos}{10000^{2i/d}} \right)
 PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```
 ```math
-Position Encoding shape = (t,d_{(embedding)})
+\text{Position Encoding shape} = (t,d_{(embedding)})
 ```
 - We add positional encoding of dimension
 
@@ -29,7 +29,7 @@ Position Encoding shape = (t,d_{(embedding)})
 ```
 - final dimensions of the input layer
 ```math
-\text{Input Embedding Shape} = (t,d_{(embedding)}
+\text{Input Embedding Shape} = (t,d_{(embedding)})
 ```
 5. **Encoder Layer**:  
    The encoder has multiple layers, each consisting of two main components:
@@ -42,17 +42,20 @@ Position Encoding shape = (t,d_{(embedding)})
    - **Query (Q)**: Represents what we are looking for (a certain relationship or feature).
    - **Key (K)**: Contains the encoded features or summary of the knowledge.
    - **Value (V)**: Contains the detailed information corresponding to the keys.
-
+```math
+\text{Shape of Q, K, V} = (t,d_{(embedding)})
+```
    The attention mechanism works as follows:
    - Compute the dot product of **Query** and **Key** to get a similarity score that tells us how much attention to give to each value.
    - Scale the result by dividing it by the square root of the dimension of the keys, which helps in stabilizing the gradients.
    - Apply the **softmax** function to these scores to convert them into a probability distribution.
    - Multiply the result by the **Value** to get a weighted sum, where tokens with higher attention scores contribute more to the final output.
+     
 ```math
 \text{score} = QK^T
 ```
 ```math
-\text{scaled score} = \frac{QK^T}{\sqrt{d_k}}
+\text{scaled score} = \frac{QK^T}{\sqrt{d_embedding}}
 ```
 ```math
 \text{attention weights} = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)
