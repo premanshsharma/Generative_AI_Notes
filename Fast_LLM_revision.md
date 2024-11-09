@@ -25,7 +25,7 @@ Position Encoding shape = (t,d_{(embedding)})
 - We add positional encoding of dimension
 
 ```math
-\(\text{Input}_{\text{final}} = \text{Embedding}(x) + \text{Positional Encoding}\)
+\text{Input}_{\text{final}} = \text{Embedding}(x) + \text{Positional Encoding}
 ```
 ```math
 Input Embedding Shape=(t,d_{(embedding)}
