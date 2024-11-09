@@ -1,3 +1,8 @@
+```math
+PE_{(pos, 2i)} = \sin \left( \frac{pos}{10000^{2i/d}} \right)
+
+```
+
 # Transformer Architecture
 
 1. **Encoder-Decoder Structure**:  
