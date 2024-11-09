@@ -41,9 +41,6 @@ PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```math
 \text{attention weights} = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)
 ```
-```math
-\text{attention weights} = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)
-```
 6. **Multi-head Attention**:  
    Instead of performing a single attention operation, transformers use **multi-head attention**. This means that multiple attention mechanisms (heads) run in parallel, each learning different aspects of the relationships between tokens. The results from all attention heads are concatenated and passed through a linear layer to combine the information.
 
@@ -77,35 +74,9 @@ Q = X_{\text{decoder}}W_Q, \quad K = X_{\text{encoder}}W_K, \quad V = X_{\text{e
 \text{probability} = \text{softmax}(\text{logits})
 ```
 
-
-
-
-
-
-# 1. Transformer
-- In transformer we have first have encoder layer and tehn we have decoder layer.
-- Before encoder we have an embedding layer which gives us the encoded vector of our input
-- We add positional encoder to our previous encoding to get a sense of position of every token. positional encoding values are taken from sin and cosin function because they provide a vide range of values. 
-- Whatever we input to the transformer layer encoder extracts the information from input and gives it to decoder layer.
-- Based on output of encoder layer, decoder layer generates the output.
-- First we need to under stand Attention layer
-- In attention layer first we have Query, keys and values.
-  - Query is what are we looking for, keys are the keywords or lets say summarised information of our knowledge, and values are detialed knowledge.
-  - First we multiply Q with K to get values that tells us how much attention should we give to each value. 
-  - we divide our Q*K with root of key vectors dimentions to get better smooth gradients.
-  - we pass this Q*K through softmax to get their probabilities then multiply with V. If Q*K represent less value that means we have to give less attention to that parrticular value. so when multiplied with V final encoded vector will have values for every token in our input representing how much attention we should give to our input.
-- we take multiple attention heads in parallel to get different encoded vectors with different attention.
-- Output_attention = concatnate(atention1, attention2, .....)
-- normalise the output attention = normalized layer = LayerNorm(x_input+output_attention)
-- Now we flatten our layer, now this is new input and we pass this to our encoder again.
-- Like this we do multiple times
-- To extract information of given token we need to give attention to previous and future tokens also.
-
-- Decoder layer
-- Now output of encoding layer is input of decoder, now we have add masking M to Q*V/dimension^0.5. this M is -ve of infinite for future values so that decoder gives attention to previous values only.
-- other attention processes are same
-- now we do Q = Xdecoder attWQ, V = XencoderWV, K = XencoderWK, where Xdecoder att is the output of masked self-attention from previous step, Xencoder is the output of encoder
-- this gives a sense of relation between encoder output and current decoder output.
-- stack many decoder layers
-
-- Now in final ouptut layer we have a vector for all the tokens in our direcctory. these are called logits. these are output of transformer, when we pass these logits through softmax function we get probability of occurance of a given token. this is how transofrmer works
+## Key Points to Note:
+- Positional Encoding allows the model to understand the order of tokens in the sequence, which is important for NLP tasks.
+- Self-attention is used in both the encoder and decoder to allow each token to focus on other tokens in the sequence, capturing relationships.
+- Masked Self-Attention in the decoder ensures that the model doesn't "cheat" by peeking at future tokens when generating outputs.
+- Multi-head Attention enables the model to learn different relationships in parallel.
+- The final logits are used to generate a distribution over all possible tokens, typically used in tasks like translation, text generation, etc.
