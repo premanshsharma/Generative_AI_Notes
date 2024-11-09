@@ -271,7 +271,7 @@ Attention(Q, K, V) = softmax (\frac{Q.K^T}{\sqrt{dk}} + M).V
 ### Final Linear Layer and softmax
 Once the output passes through all decoder layers, it is projected to the vocabulary size using a final linear layer:
 
-    - **_Z_ = Output<sub>decoder</sub>W<sub>vocab</sub> + b<sub>vocab</sub>**
+  - _Z_ = Output<sub>decoder</sub>W<sub>vocab</sub> + b<sub>vocab</sub>
 - where
   - _Z_ is the raw logits (unnormalized probabilities) for each token in the vocab
   - W<sub>vocab</sub> is the learned weight matrix that maps the decoder output to the vocab.
