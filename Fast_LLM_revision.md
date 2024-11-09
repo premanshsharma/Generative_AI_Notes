@@ -19,10 +19,11 @@ PE_{(pos, 2i)} = \sin \left( \frac{pos}{10000^{2i/d}} \right)
 ```math
 PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
 ```
-- We add positional encoding of dimension
 ```math
 Position Encoding shape = (t,d_{(embedding)}
 ```
+- We add positional encoding of dimension
+
 ```math
 \(\text{Input}_{\text{final}} = \text{Embedding}(x) + \text{Positional Encoding}\)
 ```
