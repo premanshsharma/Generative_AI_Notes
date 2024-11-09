@@ -1,6 +1,15 @@
 ```math
 PE_{(pos, 2i)} = \sin \left( \frac{pos}{10000^{2i/d}} \right)
-
+PE_{(pos, 2i+1)} = \cos \left( \frac{pos}{10000^{2i/d}} \right)
+\text{score} = QK^T
+\text{scaled score} = \frac{QK^T}{\sqrt{d_k}}
+\text{attention weights} = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)
+\text{attention weights} = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)
+\text{output} = \text{attention weights} \times V
+\text{Multi-head Output} = \text{concat}(head_1, head_2, ..., head_h)W^O
+\text{output}_{\text{norm}} = \text{LayerNorm}(x_{\text{input}} + \text{output}_{\text{attention}})
+Q = X_{\text{decoder}}W_Q, \quad K = X_{\text{encoder}}W_K, \quad V = X_{\text{encoder}}W_V
+\text{probability} = \text{softmax}(\text{logits})
 ```
 
 # Transformer Architecture
